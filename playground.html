@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 
 <head>
@@ -18,17 +18,25 @@
         <style>
             canvas {
                 border: 1px solid black;
+                width: 70%;
+            }
+            #startButton{
+                height: 100px;
+                width: 100px;
             }
         </style>
     </head>
 
     <body>
-        <canvas id="gameCanvas" width="600" height="300"></canvas>
-        <br>
+        <canvas id="responsive-canvas"></canvas>
+      <br>
         <button id="startButton">Start Game</button>
 
+
         <script>
-            var canvas = document.getElementById("gameCanvas");
+            var canvas = document.getElementById("responsive-canvas");
+            var heightRatio = 0.7;
+            canvas.height = canvas.width* heightRatio; 
             var ctx = canvas.getContext("2d");
 
             var birdImg = new Image();
@@ -102,7 +110,7 @@
                 setInterval(draw, 10);
             });
 
-            document.addEventListener("keydown", function (event) {
+            document.addEventListener("onclick", function (event) {
                 if (event.code === "Space") {
                     bird.velocity = bird.jump;
                 }
